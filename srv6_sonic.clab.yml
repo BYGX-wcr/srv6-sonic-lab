@@ -74,20 +74,20 @@ topology:
       binds:
         - config/h11/zebra.conf:/etc/frr/zebra.conf
         - config/h11/staticd.conf:/etc/frr/staticd.conf
-    h21:
+    h12:
       kind: linux
       image: quay.io/frrouting/frr:9.1.0
       network-mode: none
       binds:
-        - config/h21/zebra.conf:/etc/frr/zebra.conf
-        - config/h21/staticd.conf:/etc/frr/staticd.conf
-    h31:
+        - config/h12/zebra.conf:/etc/frr/zebra.conf
+        - config/h12/staticd.conf:/etc/frr/staticd.conf
+    h13:
       kind: linux
       image: quay.io/frrouting/frr:9.1.0
       network-mode: none
       binds:
-        - config/h31/zebra.conf:/etc/frr/zebra.conf
-        - config/h31/staticd.conf:/etc/frr/staticd.conf
+        - config/h13/zebra.conf:/etc/frr/zebra.conf
+        - config/h13/staticd.conf:/etc/frr/staticd.conf
     h61:
       kind: linux
       image: quay.io/frrouting/frr:9.1.0
@@ -125,8 +125,8 @@ topology:
     - endpoints: ["sonic05:eth4", "sonic06:eth2"]
     
     - endpoints: ["sonic01:eth2", "h11:eth1"]
-    - endpoints: ["sonic01:eth3", "h21:eth1"]
-    - endpoints: ["sonic01:eth4", "h31:eth1"]
+    - endpoints: ["sonic01:eth3", "h12:eth1"]
+    - endpoints: ["sonic01:eth4", "h13:eth1"]
     
     - endpoints: ["sonic06:eth3", "h61:eth1"]
     - endpoints: ["sonic06:eth4", "h62:eth1"]
