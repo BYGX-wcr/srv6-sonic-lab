@@ -23,6 +23,12 @@
    sudo containerlab deploy
    ```
 
+## Destroy the topology
+
+1. Destroy the topology
+   ```shell
+   sudo containerlab destroy
+   ```
 
 
    
