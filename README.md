@@ -6,7 +6,7 @@
 
 ## Deploy the topology
 
-1. Load the SONiC VS docker image
+1. Load the SONiC VS docker image:
    
    ```shell
    # docker load -i target/docker-sonic-vs.gz
@@ -22,7 +22,7 @@
    ```shell
    # ip link set br0 up
    ```
-6. Deploy the topology
+6. Deploy the topology:
    
    ```shell
    # containerlab deploy
@@ -39,7 +39,7 @@
 
 ## Destroy the topology
 
-1. Destroy the topology
+1. Destroy the topology:
    ```shell
    # containerlab destroy
    ```
