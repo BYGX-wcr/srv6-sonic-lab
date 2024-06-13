@@ -3,7 +3,7 @@ name: srv6-sonic
 topology:
   nodes:
     sonic01:
-      kind: linux
+      kind: sonic-vs
       image: docker-sonic-vs
       network-mode: none
       sysctls:
@@ -15,7 +15,7 @@ topology:
         - config/sonic01/bgpd.conf:/etc/frr/bgpd.conf
         - config/sonic01/isisd.conf:/etc/frr/isisd.conf
     sonic02:
-      kind: linux
+      kind: sonic-vs
       image: docker-sonic-vs
       network-mode: none
       sysctls:
@@ -25,7 +25,7 @@ topology:
         - config/sonic02/zebra.conf:/etc/frr/zebra.conf
         - config/sonic02/isisd.conf:/etc/frr/isisd.conf
     sonic03:
-      kind: linux
+      kind: sonic-vs
       image: docker-sonic-vs
       network-mode: none
       sysctls:
@@ -35,7 +35,7 @@ topology:
         - config/sonic03/zebra.conf:/etc/frr/zebra.conf
         - config/sonic03/isisd.conf:/etc/frr/isisd.conf
     sonic04:
-      kind: linux
+      kind: sonic-vs
       image: docker-sonic-vs
       network-mode: none
       sysctls:
@@ -45,7 +45,7 @@ topology:
         - config/sonic04/zebra.conf:/etc/frr/zebra.conf
         - config/sonic04/isisd.conf:/etc/frr/isisd.conf
     sonic05:
-      kind: linux
+      kind: sonic-vs
       image: docker-sonic-vs
       network-mode: none
       sysctls:
@@ -55,7 +55,7 @@ topology:
         - config/sonic05/zebra.conf:/etc/frr/zebra.conf
         - config/sonic05/isisd.conf:/etc/frr/isisd.conf
     sonic06:
-      kind: linux
+      kind: sonic-vs
       image: docker-sonic-vs
       network-mode: none
       sysctls:
