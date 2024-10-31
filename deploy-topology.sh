@@ -74,21 +74,14 @@ function create_link {
 
     IF="eth$((link+1))"
 
-echo "ip link add $SW1NAME-$IF type veth peer name $SW2NAME-$IF"
     ip link add $SW1NAME-$IF type veth peer name $SW2NAME-$IF
-echo "ip link set $SW1NAME-$IF netns $pid1"
     ip link set $SW1NAME-$IF netns $pid1
-echo "ip link set $SW2NAME-$IF netns $pid2"
     ip link set $SW2NAME-$IF netns $pid2
-echo "nsenter -t $pid1 -n ip link set dev $SW1NAME-$IF name $SW1LINKNAME"
     nsenter -t $pid1 -n ip link set dev $SW1NAME-$IF name $SW1LINKNAME
-echo "nsenter -t $pid2 -n ip link set dev $SW2NAME-$IF name $SW2LINKNAME"
     nsenter -t $pid2 -n ip link set dev $SW2NAME-$IF name $SW2LINKNAME
 
     echo "Bring $IF up in the virtual switch docker"
-echo "nsenter -t $pid1 -n ip link set dev $SW1LINKNAME up"
     nsenter -t $pid1 -n ip link set dev $SW1LINKNAME up
-echo "nsenter -t $pid2 -n ip link set dev $SW2LINKNAME up"
     nsenter -t $pid2 -n ip link set dev $SW2LINKNAME up
 
 }
