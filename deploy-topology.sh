@@ -86,25 +86,54 @@ function create_link {
 
 }
 
-function create_host {
-    SWNAME=sw-$1
+function create_link_host {
+    SW1NAME=$1
+    SW2NAME=$2
+    SW1LINKNAME=$3
+    SW2LINKNAME=$4
 
-    docker run --privileged -id --name $SWNAME debian bash
+    pid1=$(docker inspect --format '{{.State.Pid}}' $SW1NAME)
+    pid2=$(docker inspect --format '{{.State.Pid}}' sw-$SW2NAME)
+
+
+    IF="eth$((link+1))"
+
+    ip link add $SW1NAME-$IF type veth peer name $SW2NAME-$IF
+    ip link set $SW1NAME-$IF netns $pid1
+    ip link set $SW2NAME-$IF netns $pid2
+    nsenter -t $pid1 -n ip link set dev $SW1NAME-$IF name $SW1LINKNAME
+    nsenter -t $pid2 -n ip link set dev $SW2NAME-$IF name $SW2LINKNAME
+
+    echo "Bring $IF up in the virtual switch docker"
+    nsenter -t $pid1 -n ip link set dev $SW1LINKNAME up
+    nsenter -t $pid2 -n ip link set dev $SW2LINKNAME up
+
+}
+
+function create_host {
+    SWNAME=$1
+
+    docker run --privileged -id --name $SWNAME ubuntu bash
 }
 
 function remove_host {
-    SWNAME=sw-$1
+    SWNAME=$1
 
     docker stop $SWNAME && docker rm $SWNAME
+}
+
+function configure_host {
+    SWNAME=$1
+
+    pid=$(docker inspect --format '{{.State.Pid}}' $SWNAME)
+    nsenter -t $pid -n bash config/$SWNAME/config.sh
 }
 
 function configure_sonic_switch {
     SWNAME=$1
 
     pid=$(docker inspect --format '{{.State.Pid}}' sw-$SWNAME)
-    nsenter -t $pid -n ip link add sr0 type dummy
-    nsenter -t $pid -n ip link set sr0 up
-    nsenter -t $pid -n sysctl -w net.vrf.strict_mode=1
+    nsenter -t $pid -n bash config/$SWNAME/config.sh
 }
 
 remove_sonic_switch sonic10
@@ -166,8 +195,8 @@ create_link sonic21 sonic11 eth3 eth3
 create_link sonic21 sonic11 eth4 eth4
 create_link sonic10 a0 eth5 eth1
 create_link sonic11 a1 eth5 eth1
-create_link h0 a0 eth1 eth2
-create_link h1 a1 eth1 eth2
+create_link_host h0 a0 eth1 eth2
+create_link_host h1 a1 eth1 eth2
 
 # run sonic
 start_sonic_switch sonic10
@@ -184,3 +213,6 @@ configure_sonic_switch sonic20
 configure_sonic_switch sonic21
 configure_sonic_switch a0
 configure_sonic_switch a1
+
+configure_host h0
+configure_host h1
