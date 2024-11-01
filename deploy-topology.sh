@@ -24,7 +24,7 @@ function create_sonic_switch {
 function start_sonic_switch {
     SWNAME=$1
 
-    docker run --privileged -v /var/run/redis-vs/$SWNAME:/var/run/redis -v ${PWD}/config/$SWNAME/config_db.json:/usr/share/sonic/virtual_chassis/default_config.json -v ${PWD}/config/$SWNAME/frr.conf:/etc/frr/frr.conf --network container:sw-$SWNAME -d --name $SWNAME docker-sonic-vs
+    docker run --privileged -v /var/run/redis-vs/$SWNAME:/var/run/redis -v ${PWD}/config/$SWNAME/config_db.json:/usr/share/sonic/virtual_chassis/default_config.json -v ${PWD}/config/$SWNAME/frr.conf:/etc/frr/frr.conf --network container:sw-$SWNAME -d --name $SWNAME cscarpit/docker-sonic-vs:latest
 }
 
 function create_neighbor {
