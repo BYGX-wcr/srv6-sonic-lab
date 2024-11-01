@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+modprobe vrf
+
 function remove_sonic_switch {
     SWNAME=$1
 
