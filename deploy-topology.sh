@@ -18,7 +18,7 @@ function remove_sonic_switch {
 function create_sonic_switch {
     SWNAME=$1
 
-    docker run --privileged -id --name sw-$SWNAME debian bash
+    docker run --privileged -id --name sw-$SWNAME --hostname $SWNAME debian bash
 }
 
 function start_sonic_switch {
@@ -113,7 +113,7 @@ function create_link_host {
 function create_host {
     SWNAME=$1
 
-    docker run --privileged -id --name $SWNAME ubuntu bash
+    docker run --privileged -id --name $SWNAME --hostname $SWNAME ubuntu bash
 }
 
 function remove_host {
