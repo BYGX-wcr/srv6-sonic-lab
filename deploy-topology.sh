@@ -115,7 +115,7 @@ function create_link_host {
 function create_host {
     SWNAME=$1
 
-    docker run --privileged -id --name $SWNAME --hostname $SWNAME ubuntu bash
+    docker run --privileged -id --name $SWNAME --hostname $SWNAME cscarpit/debian bash
 }
 
 function remove_host {
