@@ -2,6 +2,9 @@
 
 modprobe vrf
 
+docker image pull cscarpit/debian:latest
+docker image pull cscarpit/docker-sonic-vs:latest
+
 function remove_sonic_switch {
     SWNAME=$1
 
