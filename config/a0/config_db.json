@@ -22,7 +22,7 @@
         "Ethernet4": {
             "vrf_name": "Vrf1"
         },
-        "Ethernet4|2001:db8:0::1/64": {
+        "Ethernet4|2001:db8:0::2/64": {
             "vrf_name": "Vrf1"
         }
     },

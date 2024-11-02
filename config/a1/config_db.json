@@ -20,10 +20,9 @@
             "ipv6_use_link_local_only": "enable"
         },
         "Ethernet4": {
-            "ipv6_use_link_local_only": "enable",
             "vrf_name": "Vrf1"
         },
-        "Ethernet4|2001:db8:1::1/64": {
+        "Ethernet4|2001:db8:1::2/64": {
             "vrf_name": "Vrf1"
         }
     },
