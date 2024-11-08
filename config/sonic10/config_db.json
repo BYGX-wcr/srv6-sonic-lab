@@ -16,20 +16,15 @@
     },
 
     "INTERFACE": {
-        "Ethernet0": {
-            "ipv6_use_link_local_only": "enable"
+        "Ethernet0|fd80::10:1/10": {
         },
-        "Ethernet4": {
-            "ipv6_use_link_local_only": "enable"
+        "Ethernet4|fd80::10:1/10": {
         },
-        "Ethernet8": {
-            "ipv6_use_link_local_only": "enable"
+        "Ethernet8|fd80::10:1/10": {
         },
-        "Ethernet12": {
-            "ipv6_use_link_local_only": "enable"
+        "Ethernet12|fd80::10:1/10": {
         },
-        "Ethernet16": {
-            "ipv6_use_link_local_only": "enable"
+        "Ethernet16|fd80::10:1/10": {
         }
     },
     

@@ -16,9 +16,7 @@
     },
 
     "INTERFACE": {
-        "Ethernet0": {
-            "ipv6_use_link_local_only": "enable"
-        },
+        "Ethernet0|fd80::a0:1/10": {},
         "Ethernet4": {
             "vrf_name": "Vrf1"
         },
