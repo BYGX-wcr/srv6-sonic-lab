@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
+apt-get update
 apt-get install -y tcpdump
-apt-get install -y iperf3
+apt-get install -y iperf
 
 echo 0 > /proc/sys/net/ipv6/conf/eth1/disable_ipv6
 ip link set dev eth1 down
