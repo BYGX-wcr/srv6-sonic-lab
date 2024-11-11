@@ -34,7 +34,7 @@
         "Ethernet4": {
             "index": "1",
             "speed": "40000",
-            "admin_status": "up",
+            "admin_status": "down",
             "mtu": "9100"
         },
         "Ethernet8": {
@@ -46,7 +46,7 @@
         "Ethernet12": {
             "index": "3",
             "speed": "40000",
-            "admin_status": "up",
+            "admin_status": "down",
             "mtu": "9100"
         }
     }
