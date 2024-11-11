@@ -191,13 +191,9 @@ create_host h1
 
 # create links
 create_link sonic20 sonic10 eth1 eth1
-create_link sonic20 sonic10 eth2 eth2
 create_link sonic20 sonic11 eth3 eth1
-create_link sonic20 sonic11 eth4 eth2
 create_link sonic21 sonic10 eth1 eth3
-create_link sonic21 sonic10 eth2 eth4
 create_link sonic21 sonic11 eth3 eth3
-create_link sonic21 sonic11 eth4 eth4
 create_link sonic10 a0 eth5 eth1
 create_link sonic11 a1 eth5 eth1
 create_link_host h0 a0 eth1 eth2
