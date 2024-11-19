@@ -85,8 +85,9 @@ function create_link {
     nsenter -t $pid1 -n ip link set dev $SW1NAME-$IF name $SW1LINKNAME
     nsenter -t $pid2 -n ip link set dev $SW2NAME-$IF name $SW2LINKNAME
 
-    echo "Bring $IF up in the virtual switch docker"
+    echo "Bring $SW1LINKNAME up in the $SW1NAME virtual switch docker"
     nsenter -t $pid1 -n ip link set dev $SW1LINKNAME up
+    echo "Bring $SW2LINKNAME up in the $SW2NAME virtual switch docker"
     nsenter -t $pid2 -n ip link set dev $SW2LINKNAME up
 
 }
@@ -109,8 +110,9 @@ function create_link_host {
     nsenter -t $pid1 -n ip link set dev $SW1NAME-$IF name $SW1LINKNAME
     nsenter -t $pid2 -n ip link set dev $SW2NAME-$IF name $SW2LINKNAME
 
-    echo "Bring $IF up in the virtual switch docker"
+    echo "Bring $SW1LINKNAME up in the $SW1NAME virtual switch docker"
     nsenter -t $pid1 -n ip link set dev $SW1LINKNAME up
+    echo "Bring $SW2LINKNAME up in the $SW2NAME virtual switch docker"
     nsenter -t $pid2 -n ip link set dev $SW2LINKNAME up
 
 }
@@ -152,39 +154,21 @@ remove_host h1
 
 # create sonic10
 create_sonic_switch sonic10
-for idx in `seq 5 31`; do
-    create_neighbor sonic10 $idx
-done
 
 # create sonic20
 create_sonic_switch sonic20
-for idx in `seq 4 31`; do
-    create_neighbor sonic20 $idx
-done
 
 # create sonic21
 create_sonic_switch sonic21
-for idx in `seq 4 31`; do
-    create_neighbor sonic21 $idx
-done
 
 # create sonic11
 create_sonic_switch sonic11
-for idx in `seq 5 31`; do
-    create_neighbor sonic11 $idx
-done
 
 # create a0
 create_sonic_switch a0
-for idx in `seq 2 31`; do
-    create_neighbor a0 $idx
-done
 
 # create a1
 create_sonic_switch a1
-for idx in `seq 2 31`; do
-    create_neighbor a1 $idx
-done
 
 create_host h0
 create_host h1
